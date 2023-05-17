@@ -205,4 +205,44 @@ public class Selenium_Facebook {
         robot.mouseMove(300, 500);
         robot.mouseWheel(2);
     }
+    @Test
+    public void webElementLocators() throws InterruptedException {
+        webDriver.get("https://www.facebook.com/");
+        webDriver.manage().window().maximize();
+        Thread.sleep(5000);
+
+        //linkText
+        WebElement linkText = webDriver.findElement(By.linkText("Create new account"));
+        String text = linkText.getText();
+        System.out.println(text);
+
+        //partialLinkText
+        webDriver.findElement(By.partialLinkText("Create new")).click();
+
+        //cssSelector Locator - support 4 attribute - id,type,class,value
+        webDriver.findElement(By.cssSelector("input#email")).sendKeys("7083139170");
+        Thread.sleep(5000);
+        webDriver.findElement(By.cssSelector("input[id='email']")).sendKeys("7083139170");
+        Thread.sleep(5000);
+
+        //xpath - 2 type - absolute(/) and relative(//)
+        webDriver.findElement(By.xpath("//input[@placeholder='Email address or phone number']")).sendKeys("7083139170");
+        webDriver.findElement(By.xpath("//input[@name='pass']")).sendKeys("hanshu435std");
+        WebElement elementLogin1 = webDriver.findElement(By.name("login"));
+        elementLogin1.click();
+
+        //text() function
+        webDriver.findElement(By.xpath("//button[(text()='Log in']")).click();
+
+        //contain method
+        webDriver.findElement(By.xpath("//input[contains(@placeholder,'Email address')]")).sendKeys("7083139170");
+        webDriver.findElement(By.xpath("//button[contains(text(),'Log in')]")).click();
+
+        //start with()
+        webDriver.findElement(By.xpath("//input[starts-with(@placeholder,'Email address')]")).sendKeys("7083139170");
+
+        //ends-with()
+        webDriver.findElement(By.xpath("//input[ends-with(@placeholder,'phone number')]")).sendKeys("7083139170");
+        webDriver.findElement(By.xpath("//button[ends-with(text(),'Log in')]")).click();
+    }
 }
