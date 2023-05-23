@@ -11,7 +11,7 @@ public class WebElement_Interface_Methods {
     public WebDriver webDriver;
 
     @Test
-    public void driverLaunch() throws InterruptedException {
+    public void webElementMethods() throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\HP\\Downloads\\chromedriver_win32\\chromedriver.exe");
         webDriver = new ChromeDriver();
         webDriver.get("https://www.facebook.com/");
@@ -46,7 +46,7 @@ public class WebElement_Interface_Methods {
 
         //getText
         String text = findEle.getText();
-        System.out.println(" text is : "+text);
+        System.out.println(" text is : " + text);
 
         //isDisplayed
         boolean displayed = findEle.isDisplayed();
@@ -72,33 +72,5 @@ public class WebElement_Interface_Methods {
 
         WebElement elementLogin = webDriver.findElement(By.name("login"));
         elementLogin.click();
-
-        //linkText
-        WebElement linkText1 = webDriver.findElement(By.linkText("Create new account"));
-        linkText1.click();
-
-        //partialLinkText
-        WebElement partialLinkText1 = webDriver.findElement(By.partialLinkText("Create new"));
-        partialLinkText1.click();
-
-        //cssSelector - 4 attributes - id,type,class,value
-        WebElement cssSelector1 = webDriver.findElement(By.cssSelector("input[id='u_9_b_Ep']"));
-        cssSelector1.sendKeys("hansani");
-
-        //xPath
-        WebElement xPath1 = webDriver.findElement(By.xpath("//input[@name='lastname']"));
-        xPath1.sendKeys("deshmukh");
-
-        //text()
-        WebElement textXPath = webDriver.findElement(By.xpath("//button[text()='Log in']"));
-        textXPath.click();
-
-        //contain()
-        WebElement containXPath = webDriver.findElement(By.xpath("//button[contains(text(),'Log')]"));
-        containXPath.click();
-
-        //contain()
-        WebElement containXPath1 = webDriver.findElement(By.xpath("//button[contains(@name,'login')]"));
-        containXPath1.click();
     }
 }
